@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://dramchevgoals.github.io/sitemap.xml
+Disallow: /
