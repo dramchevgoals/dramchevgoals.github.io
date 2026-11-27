@@ -1372,7 +1372,7 @@ html main>section.card.dg-hero,html[data-theme] main>section.card.dg-hero{positi
 .dg-hbig{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:2px}
 .dg-hbig b{font:800 clamp(36px,10vw,54px)/1 var(--f-head,var(--f-body));letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .dg-hbig span{font:600 15px var(--f-body);color:#d5d8dd}
-.dg-hs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.dg-hs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
 .dg-hs>div{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:9px 10px;min-width:0}
 .dg-hs b{display:block;font:800 22px/1.15 var(--f-body);font-variant-numeric:tabular-nums;white-space:nowrap}
 .dg-hs .lbl{font-size:11.5px}
@@ -1431,11 +1431,11 @@ html[data-theme] main>.dg-hero[data-s=f],html main>.dg-hero[data-s=f]{border-col
     const last=L.slice(-10);
     const sp=L.length?'<div class="dg-hsp" aria-hidden="true"></div>':'';
     const dots=last.map((r,i)=>`<span class="dg-dot ${r.res}" style="--i:${i}" title="${es(r.date.slice(8,10)+'.'+r.date.slice(5,7)+' · '+r.t+(r.score?' · '+r.score:''))}">${r.res==='w'?'✓':r.res==='l'?'✗':'↩'}</span>`).join('');
-    sec.innerHTML=`<div class="dg-hl">${logo?`<img class="dg-hlogo" src="${logo.src}" alt="">`:''}<div><div class="dg-hk"><span>Печалба от началото</span> · <span>${SPL[S]}</span></div>
-        <div class="dg-hbig"><b class="${pl>=0?'pos':'neg'}" id="dghpl">${sg(pl)}</b><span>ед.</span></div>
-        <div class="dg-hsub">${L.length?`<span>При залог от 1 единица на прогноза</span>`:`<span>Първите резултати идват скоро.</span>`}</div></div></div>
+    sec.innerHTML=`<div class="dg-hl">${logo?`<img class="dg-hlogo" src="${logo.src}" alt="">`:''}<div><div class="dg-hk"><span>${SPL[S]}</span></div>
+        <b id="dghpl" style="display:none"></b>
+        <div class="dg-hsub">${L.length?'':`<span>Първите резултати идват скоро.</span>`}</div></div></div>
       <div class="dg-hs"><div><span class="lbl">Познати</span><b id="dghw">${dec?Math.round(w/dec*100):0}%</b><span class="lbl">${w} от ${dec}</span></div>
-        <div><span class="lbl">ROI</span><b class="${roi>=0?'pos':'neg'}" id="dghr">${(roi>=0?'+':'−')+cm(Math.abs(roi*100),1)}%</b><span class="lbl">на прогноза</span></div>
+        <b id="dghr" style="display:none"></b>
         <div><span class="lbl">Прогнози</span><b id="dghn">${L.length}</b><span class="lbl">с резултат</span></div></div>
       ${sp}${last.length?`<div class="dg-hd"><span class="lbl">${last.length>=10?'Последните 10 резултата':'Последни резултати'}</span><div class="dg-dots">${dots}</div></div>`:''}`;
     if(!L.length){['#dghw','#dghr','#dghn'].forEach(i=>sec.querySelector(i).textContent='—');sec.querySelector('#dghpl').className='';sec.querySelector('#dghpl').textContent='0,00';first=false;return}
